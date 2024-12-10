@@ -1,0 +1,47 @@
+nav__header
+nav__logo
+nav__menu__btn
+menu-btn
+ri-menu-line
+nav__links
+nav-links
+btn
+section__container header__container
+home
+header__btns
+steps 
+about
+section__container steps__container
+section__description
+
+
+
+@media (width > 768px) {
+  nav {
+    position: static;
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .nav__header {
+    padding: 0;
+    background-color: transparent;
+  }
+
+  .nav__menu__btn {
+    display: none;
+  }
+
+  .nav__links {
+    position: static;
+    padding: 0;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color: transparent;
+    transform: none;
+  }
+
+}

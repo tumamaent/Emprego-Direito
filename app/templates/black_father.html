@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title_blakc_father"   style="color: white;">Usuarios</h1>
+<a href="{{ url_for('main.register') }}" class="btn">Agregar Usuario</a>
+
+<table class="user-table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+                <a href="{{ url_for('main.edit_account') }}" class="btn btn-edit">Editar Cuenta</a>
+                <a href="{{ url_for('main.delete_user', id=user.id) }}" class="btn btn-delete" 
+                   onclick="return confirm('¿Estás seguro de que deseas eliminar esta cuenta?');">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

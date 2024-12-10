@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="/static/sty.css" />
+    {% block title %}<title>Web de Emprego</title>{% endblock %}
+  </head>
+  <body>
+    <nav>
+      <div class="nav__header">
+        <div class="nav__logo">
+          <a href="#" class="logo">Emprego<span>Direto</span></a>
+        </div>
+        <div class="nav__menu__btn" id="menu-btn">
+          <i class="ri-menu-line"></i>
+        </div>
+      </div>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="/home" style="color: white;">Home</a></li>
+        <li><a href="/sobre_nos" style="color: white;">Sobre Nos</a></li>
+        <li><a href="/trabalhos" style="color: white;">Trabalhos</a></li>
+        <li><a href="/rewin" style="color: white;">Reviews</a></li>
+      </ul>
+      <ul class="nav__links" id="nav-links">
+        {% if 'user_id' in session %}>p>
+        <li><a href="/usuario" tyle="color: white;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAABjpJREFUaEPtWmmoVVUU/r6797Hph0PiWDQZ5VAJWUQgRKUGKWnZiBURkoGSpGL+yLJEzBzCoDIqyqJBDCsMbbD6oaRkhGgZlWI5NJgNauXz7H1Xb997n7zeu/eeffY5zyHfgsf7cdf61vrOntZeexHHmfA444t2wv/3EW8f4TxHWEROgbXXQuQSkKcB6AmRXiB7lfyI7AK5C8AuiOwAuQ5KrSD5d55xNMfKfYRFpCOsvQHAKADDAwN/B8BSKLWM5P5AjKpmuREWkT6wdiqA2wGckFOQbqRfgFKPkdyRB2ZmwiLSCdbOBjAWQCGPoKpgGIjMh9Yzsk73TIQljoeBfAVA1zYi2hJ2O4rFG9mhw7pQf8GExdqHIPJwqONMduS9VOqZEIzUhEWEsHZRZQqH+MzHhpxCpeamBUtP2JjnANyd1lGb6JPTqJTbP7wlFWGJ4ydA3ueNfjgUU05vb8Ji7USILDgcHAJ8jKDWy33svAjLwYMDUSh8BkD7gB4Bnd+hVD+SPyX59iNszHcAzkkCO8K/f0Str0qKIZGwxPFskC6DykP2NKacGwBsroD1AzAQQOc8wF2WR61dXlBT6hIWkb6w9qscgvkeIuMYRSurYYkx1wF4CkD5UhEuv0Kps0nuqwVRn7AxbwFwwYQLuQGFwhCSu+uBiEhvGLMK5Hnhzko3sBmMopoJUU3C0tAwAEptzOQc2AqlLiXppnKilEhbux5Aj0Tl2gr7oFQ3kgeqqdQmHMezQE7L4NiZeh8XTX7EGJfUuOQmi4ym1m+mI2zMVgBnZfC6g1qfHmIvxvwD4MQQ24rNEmp9szdhEekHa7/M4NCZLqbWd4ZgiDEfALg6xLZis5dad/QnbO0kiKROzP/jQGQOoyjoOBNjFgKYkIGw27wGM4pWt8SouobFmKUAXJkmXETmMYomhwBIHM8DeX+I7SEbcjKVmudHOI43geyfySFQcx0l4ebywYFF1HqcH+Hsm4bzs5tad0siV+13McYdY11CbJvZfEytr/QlbHOqT42k1m+nCVyMuQXAa2lsquqKfMMoapXE1FrDktlhGWALlBpE8g8fPBHp3ljHdreyoOOshY+qO3VbE3YxrIdS1yRlWyLSA8Z8mMPe0cT7ALU+yXdKu7w3z0rkFojcwyhaVWPNuiRhfg6Xh+bwv1Dr7r6E2+r++zOATRDZCDIC4E4Cdz3s5DPlU+mIfM0o6utL+D0AQ1M5OPqUl1PrEb6EnwQw/ujjkCIikbmMoim+hMc0lnReTgF/NKpWvTFV36VFusLauhf2VAxJt243Q+RbAHEL2wjkuSD7QmRAKtx6ykp1JLnXa4SdkhjzKYDLMgSwxCUQ1NpVTbxFjHE5vJthI72NWiu+T62HVbOvXQCwdhxEng5wuhZK3URye4DtIRMRORPF4lKIXByAcxu1rpqt1SZcfgbdCeBkb4ciMxlFD3rreyhKHM8FOclDtUllD7WumUPUL+LF8QKQE72ctQHZJr+provkdCr1aK2Yk8q0PWGt68FIktep9a1JSll+97wy7oVSZ9TL3ZML8dZOd6XPhGBXQ6nhJP/MQqqWrYh0hrXu7ejyuvgeD2uJhEs7dhxvBnl+XWfuyNF6KMlteZKu9I6sANAn6aNT68FJvv0INzRcCKXcE0mSuIv71MZq5fNJij6/S/mkmOXxFLMfSvUn+UMSrhfh0ihbOx4iLuVMFvILFIsTGEVrkpVba0gcX4FCYSFELvC0v55aL/PR9SZcmdppH8TXglyMQuHVpPUtIl1QLI6BiGt7GuQTfEnHY902x0pFuEQ6vOXhk8bSq5vyv0HE/S+AdHUr93Loal+J66/VR2jrlocS4XJTy4sA7vAehbZQPFxNLU2xSxw/AjLXrCrFdxlLrYPen1JP6eZBiTGul/KlHEqqvly3oVgczQ4dPvc1aKmXiXBlip8Ka+cAuMttIaGBJNgdhMjj0HpmrWdQX7+5BVh5gHsAgKsru3pVHrKvsd34WWg9n+U248ySG+FDa9sdL9a61mFXiRwSEOFfAN4F8AaUWpm1mTT3KV2PUKV3ehRELgLZu9QgXv5zL/wCkZ0g3RX0R4hsB7nGt98q4EOWj+1Qw2PVrp3wsTpyvnG3j7DvlzpW9f4FKH0qW6FhibUAAAAASUVORK5CYII="/></a></li>
+        <li><a href="/logout" class="btn" style="color: white;">Cerrar Sesion</a></li>
+        {% else %}
+        <li><a href="/login" class="btn" style="color: white;">Login</a></li>
+        <li><a href="/register" class="btn" style="color: white;">Registro</a></li>
+        {% endif %}
+
+        {% if session['user_id'] == 1 %}
+        <li><a href="/black_father" class="btn" style="color: white;">Base de datos</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+
+    <main>
+        {% block content %}
+
+
+
+        {% endblock %}
+    </main>
+    <footer class="footer">
+      <div class="footer-container">
+          <div class="footer-links">
+              <h3 class="footer-title">Enlaces Rápidos</h3>
+              <ul>
+                  <li><a href="/home">Inicio</a></li>
+                  <li><a href="/sobre_nos">Sobre Nos</a></li>
+                  <li><a href="#">Contato</a></li>
+                  <li><a href="/rewin">Rewiens</a></li>
+              </ul>
+          </div>
+          <div class="footer-social">
+              <h3 class="footer-title">Síguenos</h3>
+              <div class="social-icons">
+                  <a href="#" class="social-icon" title="Facebook"><i class="ri-facebook-circle-fill"></i></a>
+                  <a href="#" class="social-icon" title="Twitter"><i class="ri-twitter-fill"></i></a>
+                  <a href="#" class="social-icon" title="Instagram"><i class="ri-instagram-fill"></i></a>
+                  <a href="#" class="social-icon" title="LinkedIn"><i class="ri-linkedin-box-fill"></i></a>
+              </div>
+          </div>
+          <div class="footer-credits">
+              <h3 class="footer-title">Créditos</h3>
+              <p>&copy; 2024 EmpregoDireto. Todos los derechos reservados e as PIPOCAS.</p>
+              <p>Desarrollado por <a href="#">PIPOQUERO</a>.</p>
+          </div>
+      </div>
+  </footer>
+  
+  </body>
+</html>

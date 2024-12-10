@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Trabalhos{% endblock %}
+
+{% block content %}
+<section class="section__container explore__container">
+    <h2 class="section__header">
+        <span style="color: orangered;">Inúmeras opções de carreira</span>  <span style="color: blueviolet;">Estão esperando por você para explorar</span>
+    </h2>
+    <p style="color: white;" class="section__description">
+        Descubra um mundo de oportunidades emocionantes e infinitas possibilidades,
+        e encontre a carreira perfeita para moldar seu futuro.
+    </p>
+
+    <div class="explore__grid">
+        {% for job in jobs %}
+        <div class="explore__card">
+          <span><i class="ri-pencil-ruler-2-fill" style="color: red;"></i></span>
+          <h4>{{ job.title }}</h4>
+          <p>{{ job.description }}</p>
+          {% if session.get('is_company') %}
+          <div class="btn-container">
+            <a href="{{ url_for('main.edit_job', job_id=job.id) }}" class="btn btn-edit">Editar</a>
+            <form method="POST" action="{{ url_for('main.delete_job', job_id=job.id) }}">
+              <button type="submit" class="btn btn-delete" onclick="return confirm('¿Estás seguro de eliminar esta oferta?')">Eliminar</button>
+            </form>
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      
+
+    {% if session.get('is_company') %}
+    <div class="explore__btn">
+        <a href="{{ url_for('main.create_job') }}" class="btn">Crear Categorías</a>
+    </div>
+    {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Reviews{% endblock %}
+
+{% block content %}
+<section class="section__container client__container" id="client">
+    <h2 class="section__header" style="color: orangered;">O que nossos <span>Clientes Dizem</span></h2>
+    <p class="section__description" style="color: white;">
+        Leia depoimentos e histórias de sucesso de nossos candidatos a emprego satisfeitos e
+        Empregadores para ver como fazemos a diferença
+    </p>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="client__card">
+                    <img src="/static/img/cliente.jpg" alt="Imagem do Cliente" class="client-image">
+                    <p style="color: white;">
+                        Procurar um emprego pode ser opressor, mas esta plataforma fez tudo simples e eficiente. Enviei meu currículo, apliquei a algumas
+                        posições, e logo, fui contratado! Obrigado por ajudar
+                        eu dar o pontapé inicial na minha carreira!
+                    </p>
+                    <div class="client__ratings">
+                        <span><i class="ri-star-fill"></i></span>
+                        <span><i class="ri-star-fill"></i></span>
+                        <span><i class="ri-star-fill"></i></span>
+                        <span><i class="ri-star-fill"></i></span>
+                        <span><i class="ri-star-fill"></i></span>
+                    </div>
+                    <h4>Sarah Patel</h4>
+                    <h5>Graphic Designer</h5>
+                </div>
+            </div>
+        </div> 
+    </div> 
+</section>
+{% endblock %}
