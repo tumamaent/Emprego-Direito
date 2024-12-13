@@ -1,13 +1,14 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session
 from .models import User, Job
 from . import db
+import os
 
 main = Blueprint('main', __name__)
 
 # Mostrar todos los usuarios en home.html
 @main.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('home.html')
 
 # Página de inicio después del login
 @main.route('/home')
@@ -203,6 +204,27 @@ def edit_job(job_id):
 
     return render_template('edit_job.html', job=job)
 
+
+
+
+@main.route('/upload', methods=['POST'])
+def upload_file():
+    uploaded_file = request.files.get('file')
+    if uploaded_file and uploaded_file.filename:
+        # Verificar si la carpeta existe; si no, crearla
+        uploads_folder = 'static/uploads'
+        if not os.path.exists(uploads_folder):
+            os.makedirs(uploads_folder)
+        
+        # Ruta donde se guardará el archivo
+        file_path = os.path.join(uploads_folder, uploaded_file.filename)
+        
+        # Guardar el archivo en la ruta especificada
+        uploaded_file.save(file_path)
+        flash('Archivo subido exitosamente.')
+        return redirect(url_for('main.trabalhos'))
+    flash('No se seleccionó ningún archivo o el archivo es inválido.')
+    return redirect(url_for('main.trabalhos'))
 
 
 

@@ -18,6 +18,15 @@
           <span><i class="ri-pencil-ruler-2-fill" style="color: red;"></i></span>
           <h4>{{ job.title }}</h4>
           <p>{{ job.description }}</p>
+          <h5 style="color: white;">Sube tu Currículum</h5>
+          <div class="upload-container">
+              <form method="POST" action="{{ url_for('main.upload_file') }}" enctype="multipart/form-data">
+                  <input type="file" name="file">
+                  <button type="submit" class="btn btn-upload">Subir Archivo</button>
+              </form>
+          </div>
+          
+        
           {% if session.get('is_company') %}
           <div class="btn-container">
             <a href="{{ url_for('main.edit_job', job_id=job.id) }}" class="btn btn-edit">Editar</a>
@@ -28,8 +37,9 @@
           {% endif %}
         </div>
         {% endfor %}
-      </div>
-      
+
+
+    </div>
 
     {% if session.get('is_company') %}
     <div class="explore__btn">

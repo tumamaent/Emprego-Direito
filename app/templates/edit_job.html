@@ -3,20 +3,20 @@
 {% block title %}Editar Oferta de Trabajo{% endblock %}
 
 {% block content %}
-<div class="form-container">
-    <h1>Editar Oferta de Trabajo</h1>
+<div class="job-edit-container">
+    <h1 class="job-edit-title">Editar Oferta de Trabajo</h1>
     <form method="POST">
-        <div class="form-group">
-            <label for="title">Título</label>
-            <input type="text" id="title" name="title" value="{{ job.title }}" required>
+        <div class="job-edit-field">
+            <label for="title" class="job-edit-label">Título</label>
+            <input type="text" id="title" name="title" class="job-edit-input" value="{{ job.title }}" required>
         </div>
-        <div class="form-group">
-            <label for="description">Descripción</label>
-            <textarea id="description" name="description" required>{{ job.description }}</textarea>
+        <div class="job-edit-field">
+            <label for="description" class="job-edit-label">Descripción</label>
+            <textarea id="description" name="description" class="job-edit-textarea" required>{{ job.description }}</textarea>
         </div>
-        <button type="submit" class="btn btn-submit">Guardar Cambios</button>
-        <a href="{{ url_for('main.trabalhos') }}" class="btn btn-cancel">Cancelar</a>
+        <button type="submit" class="job-edit-button-submit">Guardar Cambios</button>
+        <a href="{{ url_for('main.trabalhos') }}" class="job-edit-button-cancel">Cancelar</a>
     </form>
 </div>
-{% endblock %}
 
+{% endblock %}
